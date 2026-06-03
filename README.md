@@ -29,6 +29,9 @@ The lab is built using VirtualBox virtual machines and includes the following co
 - **Suricata IDS**: Network intrusion detection system integrated with Wazuh.
 - **VirusTotal Integration**: Threat intelligence enrichment for file reputation analysis.
 
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/2b4d3a78-7d4c-4904-b72d-047281afdfcd" />
+
+
 ### 🛠️ Setup & Configuration
 
 #### Wazuh Configuration
