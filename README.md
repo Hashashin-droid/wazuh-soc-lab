@@ -4,5 +4,6 @@
 ## Network Configuration
 // diagram
 // ip address table
-## Wazuh Configuration
-## Suricata Configuration
+## Wazuh Installation on Ubuntu
+## Wazuh Installation on Windows
+## Suricata Installation on Ubuntu
