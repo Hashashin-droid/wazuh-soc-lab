@@ -115,3 +115,22 @@ agent.name: suricata-01 and rule.groups:suricata
 rule.id:86601
 ```
 
+#### 6.5 Evidence
+
+##### 6.5.1 Nmap Scan Results
+
+**Evidence 1: Host Discovery**
+**Evidence 2: TCP SYN Scan and Service Version Detection**
+
+##### 6.5.2 SIEM Detection Evidence
+
+**Evidence 3: Wazuh Security Evidence Export**
+
+#### 6.6. References
+
+https://attack.mitre.org/techniques/T1046/
+https://attack.mitre.org/techniques/T1018/
+https://rules.evebox.org/app/search
+https://documentation.wazuh.com/current/index.html
+https://docs.suricata.io/en/suricata-8.0.7/rules/intro.html
+
