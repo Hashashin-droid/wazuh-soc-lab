@@ -128,9 +128,9 @@ rule.id:86601
 
 #### 6.6. References
 
-https://attack.mitre.org/techniques/T1046/
-https://attack.mitre.org/techniques/T1018/
-https://rules.evebox.org/app/search
-https://documentation.wazuh.com/current/index.html
-https://docs.suricata.io/en/suricata-8.0.7/rules/intro.html
+- https://attack.mitre.org/techniques/T1046/
+- https://attack.mitre.org/techniques/T1018/
+- https://rules.evebox.org/app/search
+- https://documentation.wazuh.com/current/index.html
+- https://docs.suricata.io/en/suricata-8.0.7/rules/intro.html
 
