@@ -50,14 +50,13 @@ Each simulation includes:
 
 #### Simulation 01: Nmap Network Scanning
 
-<escape>| Category | Details |
+| Category | Details |
 |---|---|
-| Tool | Nmap |
-| Attacker | Kali Linux |
+| Tool | Atomic Red Team |
 | Target | Windows 10 |
-| MITRE ATT&CK | T1018 – Remote System Discovery; T1046 – Network Service Discovery |
-| Detection | Suricata + Wazuh |
-| Outcome | 33 alerts captured during the scanning exercise |</escape>
+| Monitoring | Sysmon, Wazuh and Suricata |
+| Framework | MITRE ATT&CK |
+| Status | Planned |
 
 Objective: Evaluate network reconnaissance detection capabilities by performing host discovery and TCP SYN/service version scanning against the Windows 10 endpoint.
 
