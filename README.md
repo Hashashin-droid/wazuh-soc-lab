@@ -19,6 +19,8 @@ This repository documents my hands-on journey toward becoming a SOC analyst. I b
 | Endpoint | `Windows 10` | Windows 10    | 192.168.56.20 | Sysmon, Atomic Red Team, Wazuh Agent         |
 | Attacker | `Kali Linux` | Kali Linux    | 192.168.56.60 | Manual attacks (Nmap, Hydra, etc.)           |
 
+![Network Diagram](network-diagram/network-diagram.png)
+
 ### Home Lab Setup Summary
 
 **Platform:** VirtualBox, running on a physical host PC
