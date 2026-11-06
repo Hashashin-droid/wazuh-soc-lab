@@ -2,17 +2,19 @@
 
 On 2026-10-23, between 01:50:37 and 01:53:20 (UTC +8), Wazuh received a series of Suricata alerts originating from internal host 192.168.56.60. The traffic showed probes to common database service ports and the VNC port range, followed by repeated alerts for RDP services on a non-standard port, all directed to 192.168.56.20 (`win-01`). The pattern of multiple unrelated service ports probed from a single source in under three minutes is consistent with automated port and service scanning rather than a targeted exploitation attempt. These activities are mapped to MITRE ATT&CK T1046 (Network Service Discovery).This was an authorized lab simulation, not an actual security incident
 
+
 ## 2. Incident Timeline
 
 | Date/Time (UTC +8)           | Event                                                                                                                                       | Source            | ATT&CK |
 | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- | ------ |
-| 2026-23-10 01:44             | Host discovery of 192.168.56.0/24 network (`nmap -sn`). 5 hosts found in 2.01s                                                              | Nmap output       | T1018  |
-| 2026-23-10 01:44-01:50       | No alerts generated                                                                                                                         | Wazuh             | n/a    |
-| 2026-23-10 01:50             | Half-open TCP SYN scanning with probing open ports to determine service/version info of 192.168.56.20 started                               | Nmap output       | T1046  |
-| 2026-23-10 01:50:37          | First alerts : ET SCAN probes to database services listening ports (3306, 5432, 1433, 1521) and VNC remote desktop services range 5800-5820 | Suricata -> Wazuh | T1046  |
-| 2026-23-10 01:50:45-01:51:49 | Repeated ET SCAN "MS Terminal Server Traffic on Non-standard Port"                                                                          | Suricata -> Wazuh | T1046  |
-| 2026-23-10 01:50:49-01:53:20 | ET POLICY alerts (MSSQL, GIOP/IIOP, RMI) from service-detection probes                                                                      | Suricata -> Wazuh | T1046  |
-| 2026-23-10 01:53:20          | Last alert, scan finished (163.67s total)                                                                                                   | Wazuh / Nmap      | n/a    |
+| 2026-10-23 01:44             | Host discovery of 192.168.56.0/24 network (`nmap -sn`). 5 hosts found in 2.01s                                                              | Nmap output       | T1018  |
+| 2026-10-23 01:44-01:50       | No alerts generated                                                                                                                         | Wazuh             | n/a    |
+| 2026-10-23 01:50             | Half-open TCP SYN scanning with probing open ports to determine service/version info of 192.168.56.20 started                               | Nmap output       | T1046  |
+| 2026-10-23 01:50:37          | First alerts : ET SCAN probes to database services listening ports (3306, 5432, 1433, 1521) and VNC remote desktop services range 5800-5820 | Suricata -> Wazuh | T1046  |
+| 2026-10-23 01:50:45-01:51:49 | Repeated ET SCAN "MS Terminal Server Traffic on Non-standard Port"                                                                          | Suricata -> Wazuh | T1046  |
+| 2026-10-23 01:50:49-01:53:20 | ET POLICY alerts (MSSQL, GIOP/IIOP, RMI) from service-detection probes                                                                      | Suricata -> Wazuh | T1046  |
+| 2026-10-23 01:53:20          | Last alert, scan finished (163.67s total)                                                                                                   | Wazuh / Nmap      | n/a    |
+
 
 ## 3. Technical Analysis
 
@@ -64,9 +66,11 @@ Although the TCP SYN scan and service enumeration identified four open ports (13
 
 ### 3.3 MITRE ATT&CK
 
-| Tactics            | Techniques                        | Procedures                                                                                                                                                                          | Tools |
-| ------------------ | --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----- |
-| TA0007 (Discovery) | T1046 (Network Service Discovery) | Conducted network scanning against the Windows 10 endpoint to identify exposed services and accessible ports. Probed database service ports, VNC ports and a non-standard RDP port. | Nmap  |
+| Tactics          | Techniques                      | Procedures                                                                                                                                                                          | Tools |
+| ---------------- | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----- |
+| TA0007 Discovery | T1018 Remote System Discovery   | Discovered active hosts on the internal network.                                                                                                                                    | Nmap  |
+| TA0007 Discovery | T1046 Network Service Discovery | Conducted network scanning against the Windows 10 endpoint to identify exposed services and accessible ports. Probed database service ports, VNC ports and a non-standard RDP port. | Nmap  |
+
 
 ## 4. Recommended Remediation Actions
 
@@ -89,6 +93,7 @@ Although the TCP SYN scan and service enumeration identified four open ports (13
 - **What Didn't Work:** ARP-based host discovery was not detected by the current configuration. Additionally, the 33 individual Level 3 alerts could be difficult to identify as a single reconnaissance event in a high-volume SOC environment, highlighting the need for correlation-based detection and alert prioritization.
 - **Triage Takeaway:** IDS alert signatures can be misleading when viewed in isolation. Analysts should correlate timestamps, source and destination IP addresses, destination ports, and the originating activity before classifying an event as malicious or escalating it as a potential malware incident.
 
+
 ## 6. Appendix
 
 ### 6.1. Commands run
@@ -108,16 +113,16 @@ sudo nmap -sS -sV -T3 192.168.56.20
 | Open services  | 135, 139, 445, 5357                  |
 | Time window    | 2026-10-23 01:50:37–01:53:20 (UTC+8) |
 
-### 6.4. Queries used
+### 6.3. Queries used
 
 ```
 agent.name: suricata-01 and rule.groups:suricata
 rule.id:86601
 ```
 
-### 6.5 Evidence
+### 6.4 Evidence
 
-#### 6.5.1 Nmap Scan Results
+#### 6.4.1 Nmap Scan Results
 
 **Evidence 1: Host Discovery**
 
@@ -127,13 +132,13 @@ rule.id:86601
 
 ![Image](evidence/nmap-full-scan.png)
 
-#### 6.5.2 SIEM Detection Evidence
+#### 6.4.2 SIEM Detection Evidence
 
 **Evidence 3: **Wazuh Traffic Log**
 
 [📥 Download the Excel Sheet](evidence/Nmap-traffic-log.xlsx)
 
-### 6.6. References
+### 6.5. References
 
 - https://attack.mitre.org/techniques/T1046/
 - https://attack.mitre.org/techniques/T1018/
