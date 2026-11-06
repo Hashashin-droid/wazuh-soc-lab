@@ -129,7 +129,9 @@ rule.id:86601
 
 #### 6.5.2 SIEM Detection Evidence
 
-**Evidence 3: Wazuh Security Evidence Export**
+**Evidence 3: **Wazuh Traffic Log**
+
+[📥 Download the Excel Sheet](evidence/Nmap-traffic-log.xlsx)
 
 ### 6.6. References
 
