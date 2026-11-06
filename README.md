@@ -1,8 +1,8 @@
-### Introduction
+## Introduction
 
 This repository documents my hands-on journey toward becoming a SOC analyst. I built a home lab with Wazuh (SIEM), Suricata (NIDS), and Sysmon to practice detection engineering, attack simulation mapped to MITRE ATT&CK, and incident triage
 
-### Objectives
+## Objectives
 
 - Build a working SIEM + NIDS pipeline from scratch
 - Generate realistic attack telemetry with Atomic Red Team and Kali
@@ -10,7 +10,7 @@ This repository documents my hands-on journey toward becoming a SOC analyst. I b
 - Identify detection gaps and close them with custom rules
 - Map every test to MITRE ATT&CK
 
-### Network Architecture
+## Network Architecture
 
 | Role     | Host         | OS            | IP            | Purpose                                      |
 | -------- | ------------ | ------------- | ------------- | -------------------------------------------- |
@@ -21,7 +21,7 @@ This repository documents my hands-on journey toward becoming a SOC analyst. I b
 
 ![Network Diagram](network-diagram/network-diagram.png)
 
-### Home Lab Setup Summary
+## Home Lab Setup Summary
 
 **Platform:** VirtualBox, running on a physical host PC
 
@@ -37,7 +37,7 @@ This repository documents my hands-on journey toward becoming a SOC analyst. I b
 6. **Suricata → Wazuh integration** — Installed a Wazuh agent on the Suricata host and configured it to forward `/var/log/suricata/eve.json` to the manager, using Wazuh’s built-in Suricata decoders and rules.
 7. **Verification** — Confirmed end-to-end telemetry: ran a ping sweep and an Nmap SYN/service scan from Kali against the Windows 10 client, and confirmed Suricata alerts reached the Wazuh dashboard (33 alerts captured, matching the scan’s timing).
 
-### Attack Simulation
+## Attack Simulation
 
 This section documents attack simulations performed within the isolated homelab environment.
 
@@ -50,7 +50,7 @@ Each simulation includes:
 - Detection gaps and recommended improvements.
 - SOC incident report.
 
-#### Simulation 01: Nmap Network Scanning
+### Simulation 01: Nmap Network Scanning
 
 Objective: Evaluate network reconnaissance detection capabilities by performing host discovery and TCP SYN/service version scanning against the Windows 10 endpoint.
 
