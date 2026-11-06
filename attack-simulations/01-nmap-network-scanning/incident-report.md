@@ -121,11 +121,11 @@ rule.id:86601
 
 **Evidence 1: Host Discovery**
 
-![Image](attack-simulations/01-nmap-network-scanning/evidence/nmap-sn.png)
+![Image](evidence/nmap-sn.png)
 
 **Evidence 2: TCP SYN Scan and Service Version Detection**
 
-![Image](attack-simulations/01-nmap-network-scanning/evidence/nmap-full-scan.png)
+![Image](evidence/nmap-full-scan.png)
 
 #### 6.5.2 SIEM Detection Evidence
 
