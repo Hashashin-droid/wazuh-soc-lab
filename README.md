@@ -61,5 +61,5 @@ Key Findings:
 - ARP-based host discovery did not generate corresponding Suricata alerts.
 - Individual alerts lacked scan-level correlation.
 
-Documentation: ![](attack-simulations/01-nmap-network-scanning/incident-report.md)
+Documentation: ![Nmap Incident Report](attack-simulations/01-nmap-network-scanning/incident-report.md)
 
