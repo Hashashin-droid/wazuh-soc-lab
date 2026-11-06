@@ -52,14 +52,6 @@ Each simulation includes:
 
 #### Simulation 01: Nmap Network Scanning
 
-| Category | Details |
-|---|---|
-| Tool | Atomic Red Team |
-| Target | Windows 10 |
-| Monitoring | Sysmon, Wazuh and Suricata |
-| Framework | MITRE ATT&CK |
-| Status | Planned |
-
 Objective: Evaluate network reconnaissance detection capabilities by performing host discovery and TCP SYN/service version scanning against the Windows 10 endpoint.
 
 Key Findings:
@@ -69,5 +61,5 @@ Key Findings:
 - ARP-based host discovery did not generate corresponding Suricata alerts.
 - Individual alerts lacked scan-level correlation.
 
-Documentation: 
+Documentation: ![Nmap Incident Report](attack-simulations/01-nmap-network-scanning/incident-report.md)
 
